@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detail Undangan | Enzo Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#8A6708; --gold-light:#C79A3E; --brown:#5B4030; --brown-dark:#3A281D;
+  --champagne:#E7DDD5; --parchment:#FBF5F1; --navy:#23255E;
+  --ink:#2B2420; --line:rgba(58,40,29,.14);
+  --whatsapp:#25D366;
+  --font-head:'Playfair Display',serif; --font-body:'Poppins',sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--parchment);color:var(--ink);font-family:var(--font-body)}
+a{text-decoration:none;color:inherit}
+.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+.head{border-bottom:1px solid var(--line);background:rgba(251,245,241,.94);position:sticky;top:0;z-index:5;backdrop-filter:blur(8px)}
+.nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px;font:700 24px/1 var(--font-head);color:var(--brown-dark)}
+.brand .mono{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:linear-gradient(150deg,var(--gold-light),var(--gold));color:#fff;font:600 13px/1 var(--font-head)}
+.back{font-size:12.5px;color:var(--brown);opacity:.8;transition:.2s}
+.back:hover{opacity:1;color:var(--gold)}
+
+.layout{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:56px 0 90px;align-items:start}
+
+/* image side */
+.image-col{position:sticky;top:96px}
+.image-main{position:relative;aspect-ratio:1/1;border-radius:8px;overflow:hidden;
+  background:linear-gradient(150deg,#efe6da,var(--champagne) 55%,#e1d2bd)}
+.image-main:after{content:'';position:absolute;inset:0;opacity:.5;background-image:repeating-linear-gradient(115deg, rgba(90,64,48,.10) 0 1px, transparent 1px 22px)}
+.image-main .mono-tile{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;transition:opacity .3s}
+.image-main .ring{width:76px;height:76px;border-radius:50%;border:1.5px solid rgba(90,64,48,.35);display:grid;place-items:center;font:600 26px/1 var(--font-head);color:var(--brown)}
+.image-main .variant-label{font:600 14px/1 var(--font-head);color:var(--brown-dark)}
+.image-main small{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:rgba(90,64,48,.55)}
+.image-note{margin:14px 4px 0;font-size:11px;color:rgba(43,36,32,.5);text-align:center}
+
+/* info side */
+.eyebrow{margin:0 0 12px;color:var(--gold);font-size:10.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase}
+.tag-pill{display:inline-block;margin-bottom:14px;padding:5px 13px;border-radius:999px;background:var(--navy);color:#fff;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+h1{margin:0;font:600 clamp(34px,4vw,50px)/1.02 var(--font-head);letter-spacing:-.03em;color:var(--brown-dark)}
+.desc{margin:18px 0 0;color:rgba(43,36,32,.66);font-size:14.5px;line-height:1.8;max-width:520px}
+
+.section{margin-top:36px}
+.section-title{margin:0 0 14px;color:rgba(43,36,32,.5);font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+
+/* variant selector */
+.variant-row{display:flex;gap:10px;flex-wrap:wrap}
+.variant-btn{padding:11px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:12.5px;font-weight:600;color:var(--brown);cursor:pointer;transition:.18s}
+.variant-btn:hover{border-color:var(--gold-light);color:var(--gold)}
+.variant-btn.active{background:var(--brown-dark);border-color:var(--brown-dark);color:#fff}
+.variant-btn:active{transform:scale(.96)}
+.variant-note{margin:12px 2px 0;font-size:12.5px;color:rgba(43,36,32,.55);line-height:1.6;min-height:18px}
+
+/* spec */
+.spec{border-top:1px solid var(--line)}
+.spec div{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+.spec span:first-child{color:rgba(43,36,32,.5)}
+.spec span:last-child{text-align:right;font-weight:500}
+
+/* tier table (pentone style vertical rows) */
+.tiers{border-top:1px solid var(--line)}
+.tier-row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:13.5px}
+.tier-row span:first-child{color:rgba(43,36,32,.6)}
+.tier-row strong{font-size:14.5px;color:var(--brown-dark);font-weight:600}
+.tier-row.best strong{color:var(--gold)}
+
+.notice{margin-top:14px;padding:16px 18px;border-radius:6px;background:var(--champagne);color:#665b54;font-size:12px;line-height:1.7}
+
+.wa-btn{margin-top:32px;display:flex;align-items:center;justify-content:center;gap:8px;padding:16px;border-radius:999px;background:var(--whatsapp);color:#fff;font-size:13px;font-weight:600;letter-spacing:.03em;transition:.2s}
+.wa-btn:hover{background:#1ebc59}
+.wa-btn:active{transform:scale(.98)}
+
+@media(max-width:820px){
+  .layout{grid-template-columns:1fr;gap:32px;padding:34px 0 60px}
+  .image-col{position:static}
+  .wrap{width:min(100% - 32px,1120px)}
+}
+</style>
+</head>
+<body>
+<header class="head"><nav class="wrap nav">
+  <a class="brand" href="index.html"><span class="mono">EW</span>Enzo Wedding</a>
+  <a class="back" href="index.html#pricelist">← Kembali ke pricelist</a>
+</nav></header>
+
+<main class="wrap layout">
+  <div class="image-col">
+    <div class="image-main" id="imageMain">
+      <div class="mono-tile" id="monoTile">
+        <div class="ring" id="monoRing">EW</div>
+        <span class="variant-label" id="variantLabel"></span>
+        <small>Enzo Wedding</small>
+      </div>
+    </div>
+    <p class="image-note">Foto produk asli akan segera hadir — tampilan di atas adalah placeholder sementara.</p>
+  </div>
+
+  <section>
+    <p id="category" class="eyebrow"></p>
+    <span id="tagPill" class="tag-pill" hidden></span>
+    <h1 id="name"></h1>
+    <p id="description" class="desc"></p>
+
+    <div class="section" id="variantSection">
+      <p class="section-title">Pilihan Varian</p>
+      <div id="variantRow" class="variant-row"></div>
+      <p id="variantNote" class="variant-note"></p>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Detail Produk</p>
+      <div id="spec" class="spec"></div>
+    </div>
+
+    <div class="section">
+      <p class="section-title">Harga per Pcs Berdasarkan Jumlah</p>
+      <div id="tiers" class="tiers"></div>
+      <div class="notice">Harga di atas adalah <strong>start from</strong> dan dapat berubah sesuai penambahan foil emas, wax seal, ukuran XL/XXL, atau aksesoris kustom lainnya. Hubungi kami untuk penawaran akurat sesuai kebutuhan Anda.</div>
+    </div>
+
+    <a id="wa" class="wa-btn" target="_blank" rel="noopener">💬 Tanya Produk Ini via WhatsApp</a>
+  </section>
+</main>
+
+<script>
+const items = {"sc-bifold-trifold": {"cat": "Undangan Softcover", "name": "Softcover BiFold & TriFold", "tag": "Terlaris", "description": "Undangan paling diminati pelanggan kami, dicetak di atas Art Carton 260 gram yang tebal dan kaku, dilapis laminasi doff atau glossy, lengkap dengan plastik bening, thankscard, dan cetak nama tamu.", "spec": [["Bahan", "Art Carton 260 gr (tebal & kaku)"], ["Finishing", "Laminasi Doff / Glossy"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "6.500"], ["200 pcs", "5.000"], ["300 pcs", "4.000"], ["400 pcs", "3.500"], ["500 pcs", "3.100"], ["600 pcs", "2.900"], ["700 pcs", "2.700"], ["800 pcs", "2.500"], ["900 pcs", "2.400"], ["1.000 pcs", "2.300"]], "variants": [{"id": "bifold", "label": "BiFold", "note": "Model lipat dua, klasik dan efisien."}, {"id": "trifold", "label": "TriFold", "note": "Model lipat tiga dengan ruang informasi lebih luas."}]}, "sc-trifold-cutting": {"cat": "Undangan Softcover", "name": "Softcover TriFold Cutting", "tag": null, "description": "Trifold dengan hasil potong (cutting) presisi untuk siluet yang lebih dinamis, tersedia dalam beberapa variasi bentuk potongan.", "spec": [["Bahan", "Art Carton 260"], ["Finishing", "Laminasi Doff / Glossy"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "6.800"], ["200 pcs", "5.300"], ["300 pcs", "4.300"], ["400 pcs", "3.800"], ["500 pcs", "3.400"], ["600 pcs", "3.200"], ["700 pcs", "3.000"], ["800 pcs", "2.800"], ["900 pcs", "2.700"], ["1.000 pcs", "2.600"]], "variants": [{"id": "v1", "label": "Cutting v1", "note": "Potongan presisi dengan siluet modern."}, {"id": "v2", "label": "Cutting v2", "note": "Variasi bentuk potongan kedua."}, {"id": "v3", "label": "Cutting v3", "note": "Variasi bentuk potongan ketiga."}]}, "sc-trifold-piled": {"cat": "Undangan Softcover", "name": "Softcover TriFold Piled", "tag": null, "description": "Lipatan berlapis yang terasa lebih kokoh di tangan, sudah termasuk pita atau beltpaper sebagai aksen penutup yang elegan.", "spec": [["Bahan", "Art Carton 260"], ["Aksesoris", "Pita / Beltpaper"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "7.200"], ["200 pcs", "5.600"], ["300 pcs", "4.600"], ["400 pcs", "4.100"], ["500 pcs", "3.700"], ["600 pcs", "3.500"], ["700 pcs", "3.300"], ["800 pcs", "3.100"], ["900 pcs", "3.000"], ["1.000 pcs", "2.900"]], "variants": [{"id": "piled", "label": "Piled", "note": "Lipatan berlapis dengan pita/beltpaper."}, {"id": "gate", "label": "Gate", "note": "Bentuk gate yang terbuka simetris ke dua sisi."}, {"id": "passport", "label": "Passport", "note": "Bentuk ringkas menyerupai buku paspor."}]}, "sc-origami": {"cat": "Undangan Softcover", "name": "Softcover Origami", "tag": null, "description": "Lipatan bergaya origami yang artistik, disempurnakan dengan tassel atau rumbai sebagai detail akhir yang manis.", "spec": [["Bahan", "Art Carton 260"], ["Aksesoris", "Tassel / Rumbai"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "7.500"], ["200 pcs", "5.900"], ["300 pcs", "4.900"], ["400 pcs", "4.400"], ["500 pcs", "4.000"], ["600 pcs", "3.800"], ["700 pcs", "3.600"], ["800 pcs", "3.400"], ["900 pcs", "3.300"], ["1.000 pcs", "3.200"]], "variants": [{"id": "origami", "label": "Origami", "note": "Lipatan artistik dengan tassel di setiap sudut."}]}, "sc-romans": {"cat": "Undangan Softcover", "name": "Softcover Romans", "tag": null, "description": "Bentuk yang sangat unik dibanding undangan lainnya, dengan finishing sabuk yang membuat undangan ini terasa lebih kokoh saat dibuka tamu.", "spec": [["Bahan", "Art Carton 260"], ["Aksesoris", "Finishing sabuk / beltpaper"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "7.200"], ["200 pcs", "5.600"], ["300 pcs", "4.600"], ["400 pcs", "4.100"], ["500 pcs", "3.700"], ["600 pcs", "3.500"], ["700 pcs", "3.300"], ["800 pcs", "3.100"], ["900 pcs", "3.000"], ["1.000 pcs", "2.900"]], "variants": [{"id": "romans", "label": "Romans", "note": "Siluet unik dengan finishing sabuk yang kokoh."}]}, "sc-waxseal": {"cat": "Undangan Softcover", "name": "Softcover Waxseal", "tag": null, "description": "Sentuhan segel lilin klasik yang memberi kesan formal dan personal, seolah surat istimewa yang dikirim khusus untuk tamu terkasih Anda.", "spec": [["Bahan", "Art Carton 260"], ["Aksesoris", "Waxseal"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "7.800"], ["200 pcs", "6.800"], ["300 pcs", "5.800"], ["400 pcs", "5.300"], ["500 pcs", "5.700"], ["600 pcs", "4.700"], ["700 pcs", "4.500"], ["800 pcs", "4.300"], ["900 pcs", "4.200"], ["1.000 pcs", "4.100"]], "variants": [{"id": "v1", "label": "Waxseal", "note": "Segel lilin klasik di bagian penutup undangan."}, {"id": "v2", "label": "Waxseal v2", "note": "Variasi penempatan segel lilin."}]}, "sc-gunungan": {"cat": "Undangan Softcover", "name": "Softcover Gunungan", "tag": null, "description": "Ornamen Gunungan khas Jawa pada struktur trifold cutting, menghadirkan nuansa budaya yang kental namun tetap terasa modern.", "spec": [["Bahan", "Art Carton 260"], ["Ornamen", "Gunungan"], ["Kelengkapan", "Plastik bening tebal, thankscard, cetak nama tamu"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "6.800"], ["200 pcs", "5.300"], ["300 pcs", "4.300"], ["400 pcs", "3.800"], ["500 pcs", "3.400"], ["600 pcs", "3.200"], ["700 pcs", "3.000"], ["800 pcs", "2.800"], ["900 pcs", "2.700"], ["1.000 pcs", "2.600"]], "variants": [{"id": "v1", "label": "Gunungan", "note": "Ornamen Gunungan Jawa yang anggun."}, {"id": "v2", "label": "Gunungan v2", "note": "Variasi kedua ornamen Gunungan."}]}, "sc-hangukin": {"cat": "Undangan Softcover", "name": "Softcover Hangukin", "tag": null, "description": "Sentuhan etnik yang hangat dengan bahan Kraft dan Jasmine, dicetak satu warna dan diikat tali rami serta kain goni untuk kesan rustic yang personal.", "spec": [["Bahan", "Kraft & Jasmine"], ["Cetak", "1 warna"], ["Aksesoris", "Tali rami & kain goni"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "6.500"], ["200 pcs", "5.300"], ["300 pcs", "4.300"], ["400 pcs", "3.800"], ["500 pcs", "3.400"], ["600 pcs", "3.200"], ["700 pcs", "3.000"], ["800 pcs", "2.800"], ["900 pcs", "2.700"], ["1.000 pcs", "2.600"]], "variants": [{"id": "hangukin", "label": "Hangukin", "note": "Nuansa rustic dengan tali rami & kain goni."}]}, "sc-holland": {"cat": "Undangan Softcover", "name": "Softcover Holland", "tag": null, "description": "Sentuhan Eropa klasik dengan tassel atau rumbai sebagai aksen akhir, memberi kesan hangat dan personal pada setiap undangan yang dikirimkan.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Art Carton 260"], ["Aksesoris", "Tassel / Rumbai"], ["Minimum order", "200 pcs"]], "tiers": [["200 pcs", "9.200"], ["300 pcs", "7.800"], ["400 pcs", "6.800"], ["500 pcs", "6.100"], ["600 pcs", "5.700"], ["700 pcs", "5.500"], ["800 pcs", "4.300"], ["900 pcs", "4.100"], ["1.000 pcs", "4.000"]], "variants": [{"id": "holland", "label": "Holland", "note": "Nuansa Eropa klasik dengan aksen tassel."}]}, "sc-pop-art": {"cat": "Undangan Softcover", "name": "Softcover Pop Art", "tag": null, "description": "Untuk pasangan yang ingin tampil berani dan playful, gaya Pop Art dengan warna-warna berani dicetak tajam di atas Art Carton berlaminasi doff.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Art Carton"], ["Finishing", "Laminasi Doff"], ["Minimum order", "200 pcs"]], "tiers": [["200 pcs", "9.000"], ["300 pcs", "7.500"], ["400 pcs", "6.500"], ["500 pcs", "5.900"], ["600 pcs", "5.500"], ["700 pcs", "5.300"], ["800 pcs", "5.100"], ["900 pcs", "4.900"], ["1.000 pcs", "4.800"]], "variants": [{"id": "popart", "label": "Pop Art", "note": "Warna berani dan playful untuk kesan modern."}]}, "sc-single-envelope": {"cat": "Amplop Softcover", "name": "Softcover Single Envelope", "tag": null, "description": "Amplop premium ukuran 15×20 cm dengan isi non-yellowboard yang lebih ringan dan simpel, tetap tampil elegan dengan laminasi doff atau glossy pilihan Anda.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Art Carton 260 & 230"], ["Finishing", "Laminasi Doff / Glossy"], ["Kelengkapan", "Plastik bening tebal, thankscard & denah, cetak nama tamu"], ["Minimum order", "200 pcs"]], "tiers": [["200 pcs", "8.700"], ["300 pcs", "6.700"], ["400 pcs", "5.800"], ["500 pcs", "5.200"], ["600 pcs", "4.800"], ["700 pcs", "4.600"], ["800 pcs", "4.400"], ["900 pcs", "4.200"], ["1.000 pcs", "4.000"]], "variants": [{"id": "single", "label": "Single Envelope", "note": "Amplop simpel dengan isi ringan non-yellowboard."}]}, "sc-single-envelope-max": {"cat": "Amplop Softcover", "name": "Softcover Single Envelope Max", "tag": null, "description": "Versi Max dari Single Envelope dengan cetak lebih penuh dan detail lebih kaya, memberi kesan undangan yang lebih mewah.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Art Carton 260 & 230"], ["Finishing", "Laminasi Doff / Glossy"], ["Minimum order", "200 pcs"]], "tiers": [["200 pcs", "10.700"], ["300 pcs", "8.500"], ["400 pcs", "7.300"], ["500 pcs", "6.800"], ["600 pcs", "6.300"], ["700 pcs", "5.800"], ["800 pcs", "5.600"], ["900 pcs", "5.200"], ["1.000 pcs", "5.000"]], "variants": [{"id": "max", "label": "Single Envelope Max", "note": "Cetak lebih penuh dan detail lebih kaya."}]}, "sc-osaka": {"cat": "Amplop Softcover", "name": "Softcover Osaka", "tag": null, "description": "Estetika bersih bergaya Jepang modern, dicetak di atas Art Carton 260 dengan pilihan laminasi doff atau glossy untuk hasil akhir yang halus.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Art Carton 260"], ["Finishing", "Laminasi Doff / Glossy"], ["Minimum order", "200 pcs"]], "tiers": [["200 pcs", "8.500"], ["300 pcs", "7.000"], ["400 pcs", "6.000"], ["500 pcs", "5.400"], ["600 pcs", "5.000"], ["700 pcs", "4.800"], ["800 pcs", "4.600"], ["900 pcs", "4.400"], ["1.000 pcs", "4.300"]], "variants": [{"id": "osaka", "label": "Osaka", "note": "Estetika Jepang modern yang bersih dan tenang."}]}, "hc-single-envelope": {"cat": "Hardcover Amplop", "name": "Hardcover Single Envelope", "tag": null, "description": "Amplop hardcover 2mm yang solid dan mewah, bagian dalam polos tanpa cetak untuk kesan minimalis yang tetap premium.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Hardcover Art Carton"], ["Finishing", "Laminasi Doff / Glossy"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "18.000"], ["100 pcs", "14.000"], ["200 pcs", "10.000"], ["300 pcs", "8.000"], ["400 pcs", "7.200"], ["500 pcs", "6.900"], ["600 pcs", "6.500"], ["700 pcs", "5.900"], ["800 pcs", "5.700"], ["900 pcs", "5.500"], ["1.000 pcs", "5.300"]], "variants": [{"id": "single", "label": "Single Envelope", "note": "Amplop dalam polos, tampilan bersih dan solid."}]}, "hc-single-envelope-max": {"cat": "Hardcover Amplop", "name": "Hardcover Single Envelope Max", "tag": null, "description": "Versi Max dengan amplop dicetak penuh di bagian luar maupun dalam, menghadirkan detail visual yang lebih kaya di setiap sisi. Tersedia pula varian dengan aksen lubang dekoratif.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Hardcover Art Carton"], ["Cetak", "Luar & dalam"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "20.000"], ["100 pcs", "16.000"], ["200 pcs", "13.000"], ["300 pcs", "10.000"], ["400 pcs", "9.000"], ["500 pcs", "8.600"], ["600 pcs", "8.100"], ["700 pcs", "7.400"], ["800 pcs", "7.100"], ["900 pcs", "6.800"], ["1.000 pcs", "6.500"]], "variants": [{"id": "max", "label": "Single Envelope Max", "note": "Cetak penuh luar & dalam amplop."}, {"id": "hole", "label": "Single Envelope Max Hole", "note": "Tambahan aksen lubang (hole) dekoratif."}]}, "hc-sliding-love": {"cat": "Hardcover Amplop", "name": "Hardcover Sliding Love", "tag": null, "description": "Mekanisme geser yang unik ke arah kanan menjadi kejutan interaktif kecil bagi tamu saat pertama kali membuka undangan Anda.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Hardcover Art Carton"], ["Mekanisme", "Slide ke kanan"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "20.000"], ["100 pcs", "16.000"], ["200 pcs", "11.000"], ["300 pcs", "8.500"], ["400 pcs", "7.700"], ["500 pcs", "7.400"], ["600 pcs", "7.000"], ["700 pcs", "6.400"], ["800 pcs", "6.300"], ["900 pcs", "6.000"], ["1.000 pcs", "5.800"]], "variants": [{"id": "sliding", "label": "Sliding Love", "note": "Mekanisme geser yang unik dan interaktif."}]}, "hc-bifold": {"cat": "Hardcover Fold", "name": "Hardcover BiFold", "tag": null, "description": "Struktur hardcover 2mm yang kokoh dengan lipatan dua sisi sederhana, hadir dalam dua pilihan ukuran untuk menyesuaikan gaya penyajian Anda.", "spec": [["Ukuran", "Medium 15×20 cm / XL 17×25 cm"], ["Bahan", "Hardcover Art Carton"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "17.000"], ["100 pcs", "13.000"], ["200 pcs", "8.500"], ["300 pcs", "7.500"], ["400 pcs", "6.600"], ["500 pcs", "6.300"], ["600 pcs", "6.000"], ["700 pcs", "5.900"], ["800 pcs", "5.700"], ["900 pcs", "5.500"], ["1.000 pcs", "5.400"]], "variants": [{"id": "bifold", "label": "BiFold", "note": "Lipatan dua sisi yang solid dan simpel."}]}, "hc-trifold": {"cat": "Hardcover Fold", "name": "Hardcover TriFold", "tag": null, "description": "Lipatan tiga sisi dengan struktur hardcover yang lebih tebal dari versi bifold, memberi lebih banyak ruang untuk detail acara Anda.", "spec": [["Ukuran", "Medium 15×20 cm / XL 17×25 cm"], ["Bahan", "Hardcover Art Carton"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "17.000"], ["100 pcs", "13.000"], ["200 pcs", "8.700"], ["300 pcs", "7.700"], ["400 pcs", "7.100"], ["500 pcs", "6.800"], ["600 pcs", "6.300"], ["700 pcs", "6.200"], ["800 pcs", "6.100"], ["900 pcs", "6.000"], ["1.000 pcs", "5.900"]], "variants": [{"id": "trifold", "label": "TriFold", "note": "Lipatan tiga sisi dengan ruang lebih luas."}]}, "hc-trifold-java": {"cat": "Hardcover Fold", "name": "Hardcover TriFold Javanese", "tag": null, "description": "Ornamen Gunungan khas Jawa menghiasi struktur trifold hardcover, menghadirkan nuansa budaya yang kental namun tetap terasa modern.", "spec": [["Ukuran", "Medium 15×20 cm"], ["Ornamen", "Gunungan"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "18.000"], ["100 pcs", "14.000"], ["200 pcs", "9.400"], ["300 pcs", "8.700"], ["400 pcs", "8.100"], ["500 pcs", "7.800"], ["600 pcs", "7.300"], ["700 pcs", "7.200"], ["800 pcs", "7.100"], ["900 pcs", "7.000"], ["1.000 pcs", "6.900"]], "variants": [{"id": "java", "label": "TriFold Javanese", "note": "Ornamen Gunungan khas Jawa yang anggun."}]}, "hc-holland": {"cat": "Hardcover Fold", "name": "Hardcover Holland", "tag": null, "description": "Detail tassel/rumbai klasik bergaya Eropa pada struktur hardcover, tersedia pula varian Romans Jasmine yang lebih berkilau.", "spec": [["Ukuran", "15 × 20 cm"], ["Aksesoris", "Tassel / Rumbai"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "18.000"], ["100 pcs", "14.000"], ["200 pcs", "10.200"], ["300 pcs", "8.800"], ["400 pcs", "7.800"], ["500 pcs", "7.100"], ["600 pcs", "6.700"], ["700 pcs", "6.500"], ["800 pcs", "5.300"], ["900 pcs", "5.100"], ["1.000 pcs", "5.000"]], "variants": [{"id": "holland", "label": "Holland", "note": "Gaya Eropa klasik dengan tassel."}, {"id": "romans", "label": "Romans Jasmine", "note": "Bahan Jasmine + isi hardcover, tassel senada."}]}, "hc-duo-slop": {"cat": "Hardcover Fold", "name": "Hardcover Duo Slop", "tag": null, "description": "Perpaduan isi hardcover dan isi softcover dalam satu undangan, memberi fleksibilitas tekstur dan efisiensi biaya tanpa mengurangi kesan mewah.", "spec": [["Ukuran", "15 × 20 cm"], ["Bahan", "Hardcover Art Carton"], ["Struktur", "Isi hardcover + isi softcover"], ["Minimum order", "50 pcs (sample) / 200 pcs (produksi)"]], "tiers": [["50 pcs", "16.000"], ["100 pcs", "13.000"], ["200 pcs", "9.000"], ["300 pcs", "7.700"], ["400 pcs", "6.800"], ["500 pcs", "6.500"], ["600 pcs", "6.000"], ["700 pcs", "5.600"], ["800 pcs", "5.400"], ["900 pcs", "5.200"], ["1.000 pcs", "5.000"]], "variants": [{"id": "duoslop", "label": "Duo Slop", "note": "Perpaduan tekstur hardcover dan softcover."}]}, "hc-javanica-v1": {"cat": "Hardcover Prestige", "name": "Hardcover TriFold Javanica V1", "tag": "Signature", "description": "Ornamen Gunungan Jawa ukuran jumbo 20×20 cm dengan amplop kecil, dirancang untuk pasangan yang menginginkan sentuhan budaya yang megah namun ringkas.", "spec": [["Ukuran", "Jumbo 20 × 20 cm"], ["Ornamen", "Gunungan Jawa"], ["Amplop", "Kecil"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "17.300"], ["200 pcs", "14.900"], ["300 pcs", "13.700"], ["400 pcs", "13.000"], ["500 pcs", "12.600"], ["600 pcs", "12.200"], ["700 pcs", "12.000"], ["800 pcs", "11.800"], ["900 pcs", "11.600"], ["1.000 pcs", "11.500"]], "variants": [{"id": "v1", "label": "Javanica V1", "note": "Gunungan Jawa dengan amplop kecil."}]}, "hc-javanica-v2": {"cat": "Hardcover Prestige", "name": "Hardcover TriFold Javanica V2", "tag": "Signature", "description": "Gunungan Jawa dengan amplop penuh yang lebih megah, tersedia pula varian Nusantara dengan ornamen adat custom sesuai daerah asal Anda.", "spec": [["Ukuran", "Jumbo 20 × 20 cm"], ["Ornamen", "Gunungan Jawa"], ["Amplop", "Penuh"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "19.500"], ["200 pcs", "16.500"], ["300 pcs", "15.000"], ["400 pcs", "14.000"], ["500 pcs", "13.600"], ["600 pcs", "13.200"], ["700 pcs", "13.000"], ["800 pcs", "12.800"], ["900 pcs", "12.600"], ["1.000 pcs", "12.500"]], "variants": [{"id": "v2", "label": "Javanica V2", "note": "Gunungan Jawa dengan amplop penuh."}, {"id": "nusantara", "label": "Nusantara", "note": "Ornamen adat Nusantara custom sesuai daerah."}]}, "hc-bludru-ausy": {"cat": "Hardcover Bludru & Spesial", "name": "Hardcover TriFold Bludru Ausy", "tag": "Signature", "description": "Kain bludru mewah membalut struktur hardcover jumbo 18×25 cm, dilengkapi ornamen custom yang menjadikan undangan ini setara mahakarya perhiasan.", "spec": [["Ukuran", "Jumbo 18 × 25 cm"], ["Bahan", "Hardcover Art Carton & Bludru"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "30.000"], ["200 pcs", "27.000"], ["300 pcs", "26.000"], ["400 pcs", "25.000"], ["500 pcs", "24.000"], ["600 pcs", "23.500"], ["700 pcs", "23.000"], ["800 pcs", "22.500"], ["900 pcs", "22.000"], ["1.000 pcs", "21.000"]], "variants": [{"id": "ausy", "label": "Bludru Ausy", "note": "Kain bludru mewah dengan ornamen custom."}]}, "hc-bludru-turkey": {"cat": "Hardcover Bludru & Spesial", "name": "Hardcover TriFold Bludru Turkey", "tag": "Signature", "description": "Puncak koleksi eksklusif kami — bludru premium berpadu foil emas penuh, ukuran jumbo 18×18 cm, tersedia pula varian Ars dengan tambahan dua halaman kertas dan pita custom.", "spec": [["Ukuran", "Jumbo 18 × 18 cm"], ["Bahan", "Bludru + Foil Emas"], ["Minimum order", "100 pcs"]], "tiers": [["100 pcs", "33.000"], ["200 pcs", "28.000"], ["300 pcs", "27.500"], ["400 pcs", "26.500"], ["500 pcs", "25.000"], ["600 pcs", "24.500"], ["700 pcs", "24.000"], ["800 pcs", "23.500"], ["900 pcs", "23.000"], ["1.000 pcs", "22.000"]], "variants": [{"id": "turkey", "label": "Bludru Turkey", "note": "Foil emas penuh pada kain bludru."}, {"id": "ars", "label": "Bludru Ars", "note": "Dua halaman tambahan, pita dan ornamen custom."}]}};
+
+const q = new URLSearchParams(location.search).get('item') || 'sc-bifold-trifold';
+const fallback = {
+  cat:'Koleksi Enzo Wedding', name:'Produk tidak ditemukan',
+  description:'Produk yang Anda cari tidak ditemukan. Silakan kembali ke pricelist untuk memilih undangan lainnya.',
+  spec:[['Informasi','Silakan hubungi kami untuk detail lebih lanjut']],
+  tiers:[['—','Hubungi kami']],
+  variants:[{id:'na',label:'—',note:''}]
+};
+const item = items[q] || fallback;
+let activeVariantIdx = 0;
+
+function initials(name){
+  return (name||'').replace(/Softcover|Hardcover/gi,'').trim().split(/\s+/).slice(0,2).map(w=>w[0]).join('').toUpperCase() || 'EW';
+}
+
+function renderVariant(idx){
+  activeVariantIdx = idx;
+  const v = item.variants[idx];
+  document.getElementById('variantLabel').textContent = v.label || item.name;
+  document.getElementById('monoRing').textContent = initials(v.label || item.name);
+  document.getElementById('variantNote').textContent = v.note || '';
+  document.querySelectorAll('.variant-btn').forEach((btn,i)=>btn.classList.toggle('active', i===idx));
+  const text = encodeURIComponent(`Halo Enzo Wedding, saya ingin bertanya tentang ${item.name} — varian ${v.label}.`);
+  document.getElementById('wa').href = `https://wa.me/62895377696312?text=${text}`;
+}
+
+// populate static fields
+document.getElementById('category').textContent = item.cat;
+document.getElementById('name').textContent = item.name;
+document.getElementById('description').textContent = item.description;
+if(item.tag){
+  const pill = document.getElementById('tagPill');
+  pill.hidden = false; pill.textContent = item.tag;
+}
+
+document.getElementById('spec').innerHTML = item.spec.map(row=>`<div><span>${row[0]}</span><span>${row[1]}</span></div>`).join('');
+
+if(item.tiers && item.tiers.length){
+  const maxIdx = item.tiers.length - 1;
+  document.getElementById('tiers').innerHTML = item.tiers.map((t,i)=>`<div class="tier-row${i===maxIdx?' best':''}"><span>${t[0]}</span><strong>Rp ${t[1]}</strong></div>`).join('');
+} else {
+  document.getElementById('tiers').innerHTML = '<div class="notice">Harga sedang diperbarui. Hubungi kami untuk informasi tercepat.</div>';
+}
+
+document.getElementById('variantRow').innerHTML = item.variants.map((v,i)=>`<button class="variant-btn" data-idx="${i}">${v.label}</button>`).join('');
+document.querySelectorAll('.variant-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>renderVariant(parseInt(btn.dataset.idx,10)));
+});
+renderVariant(0);
+</script>
+</body>
+</html>
