@@ -84,8 +84,10 @@ html{scroll-behavior:smooth}
   background:linear-gradient(150deg,#efe6da,var(--champagne) 60%,#e3d5c2);
 }
 .photo:after{content:'';position:absolute;inset:0;opacity:.5;background-image:repeating-linear-gradient(115deg, rgba(90,64,48,.10) 0 1px, transparent 1px 22px)}
+.photo.has-photo:after{display:none}
 .photo .mono-tile{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:transform .55s cubic-bezier(.2,.65,.2,1)}
-.card:hover .photo .mono-tile{transform:scale(1.045)}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.65,.2,1)}
+.card:hover .photo .mono-tile,.card:hover .photo img{transform:scale(1.045)}
 .photo .mono-tile .ring{width:52px;height:52px;border-radius:50%;border:1.4px solid rgba(90,64,48,.35);display:grid;place-items:center;font:600 18px/1 var(--font-head);color:var(--brown)}
 .photo .mono-tile small{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;color:rgba(90,64,48,.55)}
 .card h3{margin:15px 0 0;font:600 20px/1.15 var(--font-head);color:var(--brown-dark);letter-spacing:-.01em}
@@ -227,31 +229,31 @@ html{scroll-behavior:smooth}
 <script>
 // Placeholder note: real product photography pending — mono-tile placeholders used until asset/products/*.jpg are supplied.
 const products=[
-["sc-bifold-trifold", "Undangan Softcover", "Softcover BiFold & TriFold", "2.300"],
-["sc-trifold-cutting", "Undangan Softcover", "Softcover TriFold Cutting", "2.600"],
-["sc-trifold-piled", "Undangan Softcover", "Softcover TriFold Piled", "2.900"],
-["sc-origami", "Undangan Softcover", "Softcover Origami", "3.200"],
-["sc-romans", "Undangan Softcover", "Softcover Romans", "2.900"],
-["sc-waxseal", "Undangan Softcover", "Softcover Waxseal", "4.100"],
-["sc-gunungan", "Undangan Softcover", "Softcover Gunungan", "2.600"],
-["sc-hangukin", "Undangan Softcover", "Softcover Hangukin", "2.600"],
-["sc-holland", "Undangan Softcover", "Softcover Holland", "4.000"],
-["sc-pop-art", "Undangan Softcover", "Softcover Pop Art", "4.800"],
-["sc-single-envelope", "Amplop Softcover", "Softcover Single Envelope", "4.000"],
-["sc-single-envelope-max", "Amplop Softcover", "Softcover Single Envelope Max", "5.000"],
-["sc-osaka", "Amplop Softcover", "Softcover Osaka", "4.300"],
-["hc-single-envelope", "Hardcover Amplop", "Hardcover Single Envelope", "5.300"],
-["hc-single-envelope-max", "Hardcover Amplop", "Hardcover Single Envelope Max", "6.500"],
-["hc-sliding-love", "Hardcover Amplop", "Hardcover Sliding Love", "5.800"],
-["hc-bifold", "Hardcover Fold", "Hardcover BiFold", "5.400"],
-["hc-trifold", "Hardcover Fold", "Hardcover TriFold", "5.900"],
-["hc-trifold-java", "Hardcover Fold", "Hardcover TriFold Javanese", "6.900"],
-["hc-holland", "Hardcover Fold", "Hardcover Holland", "5.000"],
-["hc-duo-slop", "Hardcover Fold", "Hardcover Duo Slop", "5.000"],
-["hc-javanica-v1", "Hardcover Prestige", "Hardcover TriFold Javanica V1", "11.500"],
-["hc-javanica-v2", "Hardcover Prestige", "Hardcover TriFold Javanica V2", "12.500"],
-["hc-bludru-ausy", "Hardcover Bludru & Spesial", "Hardcover TriFold Bludru Ausy", "21.000"],
-["hc-bludru-turkey", "Hardcover Bludru & Spesial", "Hardcover TriFold Bludru Turkey", "22.000"]
+["sc-bifold-trifold", "Undangan Softcover", "Softcover BiFold & TriFold", "2.300", "asset/products/sc-bifold-trifold.png"],
+["sc-trifold-cutting", "Undangan Softcover", "Softcover TriFold Cutting", "2.600", "asset/products/sc-trifold-cutting.png"],
+["sc-trifold-piled", "Undangan Softcover", "Softcover TriFold Piled", "2.900", "asset/products/sc-trifold-piled.png"],
+["sc-origami", "Undangan Softcover", "Softcover Origami", "3.200", "asset/products/sc-origami.png"],
+["sc-romans", "Undangan Softcover", "Softcover Romans", "2.900", "asset/products/sc-romans.png"],
+["sc-waxseal", "Undangan Softcover", "Softcover Waxseal", "4.100", null],
+["sc-gunungan", "Undangan Softcover", "Softcover Gunungan", "2.600", null],
+["sc-hangukin", "Undangan Softcover", "Softcover Hangukin", "2.600", null],
+["sc-holland", "Undangan Softcover", "Softcover Holland", "4.000", null],
+["sc-pop-art", "Undangan Softcover", "Softcover Pop Art", "4.800", null],
+["sc-single-envelope", "Amplop Softcover", "Softcover Single Envelope", "4.000", "asset/products/sc-single-envelope.png"],
+["sc-single-envelope-max", "Amplop Softcover", "Softcover Single Envelope Max", "5.000", "asset/products/sc-single-envelope-max.png"],
+["sc-osaka", "Amplop Softcover", "Softcover Osaka", "4.300", null],
+["hc-single-envelope", "Hardcover Amplop", "Hardcover Single Envelope", "5.300", "asset/products/hc-single-envelope.png"],
+["hc-single-envelope-max", "Hardcover Amplop", "Hardcover Single Envelope Max", "6.500", "asset/products/hc-single-envelope-max.png"],
+["hc-sliding-love", "Hardcover Amplop", "Hardcover Sliding Love", "5.800", "asset/products/hc-sliding-love.png"],
+["hc-bifold", "Hardcover Fold", "Hardcover BiFold", "5.400", "asset/products/hc-bifold.png"],
+["hc-trifold", "Hardcover Fold", "Hardcover TriFold", "5.900", "asset/products/hc-trifold.png"],
+["hc-trifold-java", "Hardcover Fold", "Hardcover TriFold Javanese", "6.900", null],
+["hc-holland", "Hardcover Fold", "Hardcover Holland", "5.000", null],
+["hc-duo-slop", "Hardcover Fold", "Hardcover Duo Slop", "5.000", null],
+["hc-javanica-v1", "Hardcover Prestige", "Hardcover TriFold Javanica V1", "11.500", null],
+["hc-javanica-v2", "Hardcover Prestige", "Hardcover TriFold Javanica V2", "12.500", null],
+["hc-bludru-ausy", "Hardcover Bludru & Spesial", "Hardcover TriFold Bludru Ausy", "21.000", null],
+["hc-bludru-turkey", "Hardcover Bludru & Spesial", "Hardcover TriFold Bludru Turkey", "22.000", null]
 ];
 
 const groups=new Map();
@@ -268,9 +270,9 @@ function initials(name){
 let html='';
 for(const [cat,list] of groups){
   html+=`<div class="divider"><span>${cat}</span></div>`;
-  html+=list.map(([slug,cat2,name,price])=>`
+  html+=list.map(([slug,cat2,name,price,img])=>`
     <a class="card" href="detail.html?item=${slug}">
-      <div class="photo"><div class="mono-tile"><div class="ring">${initials(name)}</div><small>Enzo Wedding</small></div></div>
+      <div class="photo${img?' has-photo':''}">${img?`<img src="${img}" alt="${name}" loading="lazy">`:`<div class="mono-tile"><div class="ring">${initials(name)}</div><small>Enzo Wedding</small></div>`}</div>
       <h3>${name}</h3>
       <p class="price">Harga mulai dari <b>Rp ${price}</b> / pcs</p>
     </a>`).join('');
